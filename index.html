@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Клинический центр им. И.М. Сеченова — прототип</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header" id="top">
+      <div class="header__inner container">
+        <div class="header__brand">
+          <div class="logo">SC</div>
+          <div class="brand-text">
+            <span class="brand-title">Клинический центр</span>
+            <span class="brand-subtitle">Сеченовского Университета</span>
+          </div>
+        </div>
+        <nav class="header__nav" aria-label="Главное меню">
+          <a href="#about">О центре</a>
+          <a href="#structure">Структура</a>
+          <a href="#doctors">Врачи</a>
+          <a href="#patients">Пациентам</a>
+          <a href="https://telemed.sechenovclinic.ru" target="_blank" rel="noreferrer">Телемедицина</a>
+          <a href="https://sechenovclinic.ru/about/?act=cont" target="_blank" rel="noreferrer">Контакты</a>
+          <a href="https://lk.sechenovclinic.ru" target="_blank" rel="noreferrer">Личный кабинет</a>
+        </nav>
+        <div class="header__actions">
+          <button class="icon-button" id="searchToggle" aria-label="Открыть поиск">
+            <span class="icon">🔍</span>
+          </button>
+          <div class="search" id="searchBox" aria-hidden="true">
+            <input type="text" placeholder="Симптом, услуга, врач, программа…" />
+          </div>
+          <div class="header__contact">
+            <a href="tel:+74994508889" class="phone">+7 (499) 450-88-89</a>
+            <div class="contact-meta">Единый контактный центр • Ежедневно 8:00–20:00</div>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-primary" id="appointmentToggle" aria-haspopup="true" aria-expanded="false">Записаться</button>
+            <div class="dropdown__menu" id="appointmentMenu" role="menu">
+              <a href="#" data-modal="appointment" role="menuitem">В клинику</a>
+              <a href="https://telemed.sechenovclinic.ru" target="_blank" rel="noreferrer" role="menuitem">Телемедицина</a>
+            </div>
+          </div>
+          <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <div class="mobile-menu__header">
+          <div class="brand-text">
+            <span class="brand-title">Клинический центр</span>
+            <span class="brand-subtitle">Сеченовского Университета</span>
+          </div>
+          <button class="icon-button" id="closeMenu" aria-label="Закрыть меню">✕</button>
+        </div>
+        <nav class="mobile-menu__nav" aria-label="Мобильное меню">
+          <a href="#about">О центре</a>
+          <a href="#structure">Структура</a>
+          <a href="#doctors">Врачи</a>
+          <a href="#patients">Пациентам</a>
+          <a href="https://telemed.sechenovclinic.ru" target="_blank" rel="noreferrer">Телемедицина</a>
+          <a href="https://sechenovclinic.ru/about/?act=cont" target="_blank" rel="noreferrer">Контакты</a>
+          <a href="https://lk.sechenovclinic.ru" target="_blank" rel="noreferrer">Личный кабинет</a>
+        </nav>
+        <button class="btn btn-primary" data-modal="appointment">Записаться</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- BLOCK 1: Banner carousel -->
+      <section class="hero" id="about">
+        <div class="container">
+          <div class="swiper hero-swiper">
+            <div class="swiper-wrapper" id="heroSlides"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BLOCK 2: Smart search -->
+      <section class="smart-search" id="patients">
+        <div class="container">
+          <div class="section-header">
+            <h2>Найдите врача, услугу или информацию за минуту</h2>
+            <p>Введите симптом, направление или название обследования — покажем подходящие варианты.</p>
+          </div>
+          <div class="search-bar">
+            <input type="text" id="smartSearchInput" placeholder="Например, МРТ головного мозга" />
+            <button class="btn btn-primary">Найти</button>
+            <div class="search-suggestions" id="smartSearchSuggestions" aria-live="polite"></div>
+          </div>
+          <div class="chips" id="searchChips"></div>
+        </div>
+      </section>
+
+      <!-- BLOCK 3: Structure -->
+      <section class="structure" id="structure">
+        <div class="container">
+          <div class="section-header">
+            <h2>Структура Клинического центра</h2>
+            <p>5 клинических больниц, 2 института и 2 центра — выберите нужное подразделение</p>
+            <span class="micro">Если не уверены — контактный центр поможет с маршрутом</span>
+          </div>
+          <div class="grid" id="structureGrid"></div>
+          <a class="btn btn-secondary" href="https://sechenovclinic.ru/about/?act=struktura" target="_blank" rel="noreferrer">Вся структура</a>
+        </div>
+      </section>
+
+      <!-- BLOCK 4: News -->
+      <section class="news" id="news">
+        <div class="container">
+          <div class="section-header split">
+            <div>
+              <h2>Новости и события</h2>
+              <p>Анонсы, достижения, полезные материалы и важные обновления для пациентов</p>
+            </div>
+            <a class="btn btn-ghost" href="https://sechenovclinic.ru/about/?act=news" target="_blank" rel="noreferrer">Все новости</a>
+          </div>
+          <div class="grid" id="newsGrid"></div>
+        </div>
+      </section>
+
+      <!-- BLOCK 5: Advantages -->
+      <section class="advantages" id="advantages">
+        <div class="container">
+          <div class="section-header">
+            <h2>Почему выбирают Клинический центр</h2>
+            <p>Опыт, технологии и комплексный подход — от диагностики до реабилитации</p>
+          </div>
+          <div class="mosaic" id="advantagesMosaic"></div>
+          <div class="stats" id="stats"></div>
+        </div>
+      </section>
+
+      <!-- BLOCK 6: How to book -->
+      <section class="booking" id="booking">
+        <div class="container">
+          <div class="section-header">
+            <h2>Как записаться на приём</h2>
+            <p>Выберите удобный способ — поможем с записью, временем и местом</p>
+          </div>
+          <div class="grid" id="bookingGrid"></div>
+        </div>
+      </section>
+
+      <!-- BLOCK 7: Promotions -->
+      <section class="promos" id="promos">
+        <div class="container">
+          <div class="section-header split">
+            <div>
+              <h2>Акции и специальные предложения</h2>
+              <p>Периодические программы и специальные условия для пациентов</p>
+            </div>
+            <a class="btn btn-ghost" href="#">Все акции</a>
+          </div>
+          <div class="grid" id="promoGrid"></div>
+        </div>
+      </section>
+
+      <!-- BLOCK 8: Programs -->
+      <section class="programs" id="programs">
+        <div class="container">
+          <div class="section-header split">
+            <div>
+              <h2>Комплексные программы</h2>
+              <p>Готовые решения для обследования и профилактики</p>
+            </div>
+            <a class="btn btn-ghost" href="https://sechenovclinic.ru/programs/" target="_blank" rel="noreferrer">Все программы</a>
+          </div>
+          <div class="chips" id="programTabs"></div>
+          <div class="grid" id="programGrid"></div>
+        </div>
+      </section>
+
+      <!-- BLOCK 9: Specialists -->
+      <section class="specialists" id="doctors">
+        <div class="container">
+          <div class="section-header split">
+            <div>
+              <h2>Наши специалисты</h2>
+              <p>В этом месяце — команда кардиоангиологии и сосудистой хирургии</p>
+            </div>
+            <a class="btn btn-ghost" href="https://sechenovclinic.ru/expert/" target="_blank" rel="noreferrer">Все врачи</a>
+          </div>
+          <div class="swiper specialists-swiper">
+            <div class="swiper-wrapper" id="specialistsSlides"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BLOCK 10: Reviews -->
+      <section class="reviews" id="reviews">
+        <div class="container">
+          <div class="section-header split">
+            <div>
+              <h2>Отзывы пациентов</h2>
+              <p>Реальные истории и впечатления от помощи</p>
+            </div>
+            <div class="section-actions">
+              <button class="btn btn-ghost" data-modal="review">Оставить отзыв</button>
+              <a class="btn btn-ghost" href="#">Все отзывы</a>
+            </div>
+          </div>
+          <div class="swiper reviews-swiper">
+            <div class="swiper-wrapper" id="reviewsSlides"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BLOCK 11: Clinics & map -->
+      <section class="locations" id="locations">
+        <div class="container">
+          <div class="section-header split">
+            <div>
+              <h2>Клиники и адреса</h2>
+              <p>Выберите удобную локацию — покажем маршруты и контакты</p>
+            </div>
+            <a class="btn btn-ghost" href="#">Все клиники</a>
+          </div>
+          <div class="locations__layout">
+            <div class="map" aria-label="Карта клиник">
+              <div class="map__overlay">
+                <span class="pin">📍</span>
+                <span class="pin">📍</span>
+                <span class="pin">📍</span>
+              </div>
+              <div class="map__labels">
+                <span>УКБ №1</span>
+                <span>Центр материнства</span>
+                <span>Институт стоматологии</span>
+              </div>
+            </div>
+            <div class="locations__list">
+              <div class="chips" id="locationFilters"></div>
+              <div class="list" id="locationList"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BLOCK 12: FAQ -->
+      <section class="faq" id="faq">
+        <div class="container">
+          <div class="section-header">
+            <h2>Частые вопросы</h2>
+            <p>Короткие ответы на ключевые вопросы пациентов</p>
+          </div>
+          <div class="accordion" id="faqAccordion"></div>
+        </div>
+      </section>
+
+      <!-- BLOCK 13: Final CTA -->
+      <section class="final-cta" id="cta">
+        <div class="container">
+          <div class="cta-card">
+            <div>
+              <h2>Нужна помощь с выбором врача или услуги?</h2>
+              <p>Позвоните в единый контактный центр или запишитесь онлайн — подскажем маршрут и удобное время</p>
+              <span class="micro">Ежедневно 8:00–20:00</span>
+              <span class="micro">Доступна телемедицина и личный кабинет для управления записями</span>
+            </div>
+            <div class="cta-actions">
+              <div class="dropdown">
+                <button class="btn btn-light" id="finalAppointmentToggle" aria-haspopup="true" aria-expanded="false">Записаться</button>
+                <div class="dropdown__menu" id="finalAppointmentMenu" role="menu">
+                  <a href="#" data-modal="appointment" role="menuitem">В клинику</a>
+                  <a href="https://telemed.sechenovclinic.ru" target="_blank" rel="noreferrer" role="menuitem">Телемедицина</a>
+                </div>
+              </div>
+              <a class="btn btn-outline" href="tel:+74994508889">Позвонить +7 (499) 450-88-89</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div>
+            <h4>Навигация</h4>
+            <a href="#about">О центре</a>
+            <a href="#structure">Структура</a>
+            <a href="#doctors">Врачи</a>
+            <a href="#patients">Пациентам</a>
+            <a href="#programs">Комплексные программы</a>
+            <a href="#news">Новости</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="https://sechenovclinic.ru/about/?act=cont" target="_blank" rel="noreferrer">Контакты</a>
+          </div>
+          <div>
+            <h4>Справочные</h4>
+            <a href="#">Прейскурант</a>
+            <a href="#">Способы оплаты</a>
+            <a href="#">Нормативные документы</a>
+            <a href="#">Лицензии</a>
+          </div>
+          <div>
+            <h4>Служебные</h4>
+            <a href="#">Политика ПДн</a>
+            <a href="#">Карта сайта</a>
+          </div>
+          <div>
+            <h4>Соцсети</h4>
+            <div class="footer__social">
+              <a href="#">VK</a>
+              <a href="#">Telegram</a>
+              <a href="#">Дзен</a>
+              <a href="#">МАКС</a>
+            </div>
+            <div class="quality">
+              <span>Служба контроля качества</span>
+              <a href="tel:+74994504989">+7 (499) 450-49-89</a>
+              <a href="#">Контроль качества</a>
+              <small>Обращения и предложения по сервису</small>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <span>Имеются противопоказания. Необходима консультация специалиста.</span>
+          <span>© 2026 Клинический центр им. И.М. Сеченова</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="floating-buttons">
+    <a class="floating" href="#" aria-label="Telegram">💬</a>
+    <button class="floating" data-modal="callback" aria-label="Заказать звонок">📞</button>
+  </div>
+
+  <div class="modal" id="callbackModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal__content">
+      <button class="modal__close" data-close="modal">✕</button>
+      <h3>Заказать звонок</h3>
+      <form>
+        <label>Имя
+          <input type="text" placeholder="Ваше имя" required />
+        </label>
+        <label>Телефон
+          <input type="tel" placeholder="+7 (___) ___-__-__" required />
+        </label>
+        <label>Комментарий
+          <textarea placeholder="Удобное время, вопрос"></textarea>
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" required />
+          <span>Согласен на обработку персональных данных</span>
+        </label>
+        <button class="btn btn-primary" type="submit">Отправить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="appointmentModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal__content">
+      <button class="modal__close" data-close="modal">✕</button>
+      <h3>Записаться к врачу</h3>
+      <form>
+        <label>Имя
+          <input type="text" placeholder="Ваше имя" required />
+        </label>
+        <label>Телефон
+          <input type="tel" placeholder="+7 (___) ___-__-__" required />
+        </label>
+        <label>Комментарий
+          <textarea id="appointmentComment" placeholder="Укажите врача или пожелания"></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit">Оставить заявку</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="reviewModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal__content">
+      <button class="modal__close" data-close="modal">✕</button>
+      <h3>Оставить отзыв</h3>
+      <form>
+        <label>Имя
+          <input type="text" placeholder="Ваше имя" required />
+        </label>
+        <label>Email
+          <input type="email" placeholder="mail@example.com" required />
+        </label>
+        <label>Отзыв
+          <textarea placeholder="Поделитесь впечатлениями" required></textarea>
+        </label>
+        <small>Можно также отправить на clinic@staff.sechenov.ru</small>
+        <button class="btn btn-primary" type="submit">Отправить</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
